@@ -1,0 +1,43 @@
+﻿<!Doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Edição de Fornecedores - Gestão de Medicamentos</title>
+    </head>
+
+    <body>
+        <h1>Gestão de Medicamentos</h1>
+
+        <hr />
+
+        <a href="/">Página Inicial</a> |
+        <a href="/fornecedores/cadastrar">Cadastrar Novo Fornecedor</a> |
+        <a href="/fornecedores/visualizar">Visualizar Fornecedores</a>
+
+        <hr />
+
+        <h3>Edição de Fornecedor</h3>
+
+        <form action="/fornecedores/editar/#id#" method="post">
+            <label>Nome do Fornecedor:</label>
+            <br />
+            <input type="text" name="nome" value="#nome#"/>
+
+            <br />
+
+            <label>Telefone do Fornecedor:</label>
+            <br />
+            <input type="text" name="telefone" value="#telefone#"/>
+
+            <br />
+
+            <label>CNPJ do Fornecedor:</label>
+            <br />
+            <input type="text" name="cnpj" value="#cnpj#"/>
+            <hr />
+
+            <button type="submit">Gravar</button>
+
+        </form>
+    </body>
+</html>

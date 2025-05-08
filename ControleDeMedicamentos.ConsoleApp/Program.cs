@@ -1,7 +1,4 @@
-﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
-using ControleDeMedicamentos.ConsoleApp.ModuloEntrada;
-using ControleDeMedicamentos.ConsoleApp.ModuloRequisicaoDeSaida;
-using ControleDeMedicamentos.ConsoleApp.Util;
+﻿using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
 
 namespace ControleDeMedicamentos.ConsoleApp;
 
@@ -9,75 +6,30 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        TelaPrincipal telaPrincipal = new TelaPrincipal();
+        WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-        while (true)
-        {
-            telaPrincipal.ApresentarMenu();
+        WebApplication app = builder.Build();
 
-            ITelaCrud telaSelecionada = telaPrincipal.ObterTela();
+        app.MapGet("/", PaginaInicial);
 
-            if (telaSelecionada == null)
-            {
-                if (telaPrincipal.OpcaoPrincipal == "S")
-                    return;
+        app.MapGet("/fornecedores/cadastrar", FornecedorWeb.ExibirFormularioCadastroFornecedor);
+        app.MapPost("/fornecedores/cadastrar", FornecedorWeb.CadastrarFornecedor);
 
-                Notificador.ExibirMensagem("Opção inválida!", ConsoleColor.Red);
-                continue;
-            }
+        app.MapGet("/fornecedores/editar/{id:int}", FornecedorWeb.ExibirFormularioEdicaoFornecedor);
+        app.MapPost("/fornecedores/editar/{id:int}", FornecedorWeb.EditarFornecedor);
 
-            bool deveRodar = true;
-            while (deveRodar)
-            {
-                string opcaoEscolhida = telaSelecionada.ApresentarMenu();
+        app.MapGet("/fornecedores/excluir/{id:int}", FornecedorWeb.ExibirFormularioExclusaoFornecedor);
+        app.MapPost("/fornecedores/excluir/{id:int}", FornecedorWeb.ExcluirFornecedor);
 
-                if (telaSelecionada is TelaRequisicaoDeSaida)
-                {
-                    if (opcaoEscolhida == "5")
-                    {
-                        TelaRequisicaoDeSaida telaRequisicaoDeSaida = (TelaRequisicaoDeSaida)telaSelecionada;
+        app.MapGet("/fornecedores/visualizar", FornecedorWeb.VisualizarFornecedores);
 
-                        telaRequisicaoDeSaida.VisualizarRequisicoesPorPaciente();
-                    }
-                }
+        app.Run();
+    }
 
-                else if (telaSelecionada is TelaEntrada)
-                {
-                    TelaEntrada telaEntrada = (TelaEntrada)telaSelecionada;
+    static Task PaginaInicial(HttpContext context)
+    {
+        string conteudo = File.ReadAllText("Compartilhado/Html/PaginaInicial.html");
 
-                    if (opcaoEscolhida == "1")
-                        telaEntrada.CadastrarRegistro();
-
-                    else if (opcaoEscolhida == "2")
-                        telaEntrada.ExcluirRegistro();
-
-                    else if (opcaoEscolhida == "3")
-                        telaEntrada.VisualizarRegistros(true);
-
-                    else if (opcaoEscolhida == "S")
-                        break;
-
-                    else
-                        Notificador.ExibirMensagem("Opção inválida!", ConsoleColor.Red);
-
-                    continue;
-                }
-
-                switch (opcaoEscolhida)
-                {
-                    case "1": telaSelecionada.CadastrarRegistro(); break;
-
-                    case "2": telaSelecionada.EditarRegistro(); break;
-
-                    case "3": telaSelecionada.ExcluirRegistro(); break;
-
-                    case "4": telaSelecionada.VisualizarRegistros(true); break;
-
-                    case "S": deveRodar = false; break;
-
-                    default: Notificador.ExibirMensagem("Opção inválida!", ConsoleColor.Red); break;
-                }
-            }
-        }
+        return context.Response.WriteAsync(conteudo);
     }
 }

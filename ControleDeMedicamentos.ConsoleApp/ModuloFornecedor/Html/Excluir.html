@@ -1,0 +1,28 @@
+﻿<!Doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Exclusão de Fornecedores - Gestão de Medicamentos</title>
+    </head>
+
+    <body>
+        <h1>Gestão de Medicamentos</h1>
+
+        <hr />
+
+        <a href="/">Página Inicial</a> /
+        <a href="/fornecedores/cadastrar">Cadastrar Novo Fornecedor</a> /
+        <a href="/fornecedores/visualizar">Visualizar Fornecedores</a>
+
+        <hr />
+
+        <h3>Exclusão de Fornecedor</h3>
+
+        <p>Você tem certeza que deseja excluir o registro "#fornecedor#"?</p>
+
+        <form action="/fornecedores/excluir/#id#" method="post">
+            <button type="submit">Confirmar</button>
+            <a href="/fornecedores/visualizar">Voltar</a>
+        </form>
+    </body>
+</html>
