@@ -1,0 +1,43 @@
+﻿<!Doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Edição de Funcionários - Gestão de Medicamentos</title>
+    </head>
+
+    <body>
+        <h1>Gestão de Medicamentos</h1>
+
+        <hr />
+
+        <a href="/">Página Inicial</a> |
+        <a href="/funcionarios/cadastrar">Cadastrar Novo Funcionário</a> |
+        <a href="/funcionarios/visualizar">Visualizar Funcionários</a>
+
+        <hr />
+
+        <h3>Edição de Funcionário</h3>
+
+        <form action="/funcionarios/editar/#id#" method="post">
+            <label>Nome do Funcionário:</label>
+            <br />
+            <input type="text" name="nome" value="#nome#"/>
+
+            <br />
+
+            <label>Telefone do Funcionário:</label>
+            <br />
+            <input type="text" name="telefone" value="#telefone#"/>
+
+            <br />
+
+            <label>CPF do Funcionário:</label>
+            <br />
+            <input type="text" name="cnpj" value="#cpf#"/>
+            <hr />
+
+            <button type="submit">Gravar</button>
+
+        </form>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+﻿<!Doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Exclusão de Funcionário - Gestão de Medicamentos</title>
+    </head>
+
+    <body>
+        <h1>Gestão de Medicamentos</h1>
+
+        <hr />
+
+        <a href="/">Página Inicial</a> /
+        <a href="/funcionarios/cadastrar">Cadastrar Novo Funcionário</a> /
+        <a href="/funcionarios/visualizar">Visualizar Funcionários</a>
+
+        <hr />
+
+        <h3>Exclusão de Funcionário</h3>
+
+        <p>Você tem certeza que deseja excluir o registro "#funcionario#"?</p>
+
+        <form action="/funcionarios/excluir/#id#" method="post">
+            <button type="submit">Confirmar</button>
+            <a href="/funcionarios/visualizar">Voltar</a>
+        </form>
+    </body>
+</html>
