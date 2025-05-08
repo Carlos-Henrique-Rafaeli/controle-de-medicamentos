@@ -1,0 +1,42 @@
+﻿<!Doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Cadastro de Paciente - Gestão de Medicamentos</title>
+    </head>
+
+    <body>
+        <h1>Gestão de Medicamentos</h1>
+
+        <hr />
+
+        <a href="/">Página Inicial</a> |
+        <a href="/pacientes/visualizar">Visualizar Pacientes</a>
+
+        <hr />
+
+        <h3>Cadastro de Paciente</h3>
+
+        <form action="/pacientes/cadastrar" method="post">
+            <label>Nome do Paciente:</label>
+            <br />
+            <input type="text" name="nome" />
+
+            <br />
+
+            <label>Telefone do Paciente:</label>
+            <br />
+            <input type="text" name="telefone" />
+
+            <br />
+
+            <label>Cartão SUS do Paciente:</label>
+            <br />
+            <input type="text" name="sus" />
+            <hr />
+
+            <button type="submit">Gravar</button>
+
+        </form>
+    </body>
+</html>

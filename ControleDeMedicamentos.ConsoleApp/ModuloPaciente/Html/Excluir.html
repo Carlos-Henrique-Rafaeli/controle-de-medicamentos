@@ -1,0 +1,28 @@
+﻿<!Doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Exclusão de Paciente - Gestão de Medicamentos</title>
+    </head>
+
+    <body>
+        <h1>Gestão de Medicamentos</h1>
+
+        <hr />
+
+        <a href="/">Página Inicial</a> /
+        <a href="/pacientes/cadastrar">Cadastrar Novo Paciente</a> /
+        <a href="/pacientes/visualizar">Visualizar Pacientes</a>
+
+        <hr />
+
+        <h3>Exclusão de Paciente</h3>
+
+        <p>Você tem certeza que deseja excluir o registro "#paciente#"?</p>
+
+        <form action="/sacientes/excluir/#id#" method="post">
+            <button type="submit">Confirmar</button>
+            <a href="/pacientes/visualizar">Voltar</a>
+        </form>
+    </body>
+</html>

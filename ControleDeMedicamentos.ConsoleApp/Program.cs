@@ -1,5 +1,6 @@
 ﻿using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
 using ControleDeMedicamentos.ConsoleApp.ModuloFuncionario;
+using ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
 
 namespace ControleDeMedicamentos.ConsoleApp;
 
@@ -36,6 +37,18 @@ internal class Program
         app.MapPost("/funcionarios/excluir/{id:int}", FuncionarioWeb.Excluir);
 
         app.MapGet("/funcionarios/visualizar", FuncionarioWeb.Visualizar);
+
+        // Pacientes
+        app.MapGet("/pacientes/cadastrar", PacienteWeb.ExibirFormularioCadastro);
+        app.MapPost("/pacientes/cadastrar", PacienteWeb.Cadastrar);
+
+        app.MapGet("/pacientes/editar/{id:int}", PacienteWeb.ExibirFormularioEdicao);
+        app.MapPost("/pacientes/editar/{id:int}", PacienteWeb.Editar);
+
+        app.MapGet("/pacientes/excluir/{id:int}", PacienteWeb.ExibirFormularioExclusao);
+        app.MapPost("/pacientes/excluir/{id:int}", PacienteWeb.Excluir);
+
+        app.MapGet("/pacientes/visualizar", PacienteWeb.Visualizar);
 
         app.Run();
     }
