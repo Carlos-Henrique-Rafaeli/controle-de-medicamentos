@@ -1,4 +1,9 @@
-﻿
+﻿@using ControleDeMedicamentos.ConsoleApp.ModuloFuncionario;
+
+@{
+    List<Funcionario> funcionarios = ViewBag.Funcionarios;
+}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +24,10 @@
     <h3>Visualização de Funcionários</h3>
 
     <ul>
-        #funcionario#
+        @foreach (Funcionario f in funcionarios)
+        { 
+            <li>@f.ToString() / <a href="/funcionarios/editar/@f.Id">Editar</a> / <a href="/funcionarios/excluir/@f.Id">Excluir</a> </li>
+        }
     </ul>
 </body>
 </html>

@@ -1,4 +1,10 @@
-﻿<!Doctype html>
+﻿@using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
+
+@{
+    Fornecedor f = ViewBag.Fornecedor;
+}
+
+<!Doctype html>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -18,22 +24,23 @@
 
         <h3>Edição de Fornecedor</h3>
 
-        <form action="/fornecedores/editar/#id#" method="post">
+        <form action="/fornecedores/editar/@f.Id" method="post">
             <label>Nome do Fornecedor:</label>
             <br />
-            <input type="text" name="nome" value="#nome#"/>
+            <input type="text" name="nome" value="@f.Nome" />
 
             <br />
 
             <label>Telefone do Fornecedor:</label>
             <br />
-            <input type="text" name="telefone" value="#telefone#"/>
+            <input type="text" name="telefone" value="@f.Telefone" />
 
             <br />
 
             <label>CNPJ do Fornecedor:</label>
             <br />
-            <input type="text" name="cnpj" value="#cnpj#"/>
+            <input type="text" name="cnpj" value="@f.Cnpj"/>
+            
             <hr />
 
             <button type="submit">Gravar</button>
