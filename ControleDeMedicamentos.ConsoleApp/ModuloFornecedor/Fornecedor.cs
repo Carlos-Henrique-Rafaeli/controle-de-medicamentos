@@ -56,10 +56,5 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloFornecedores
 
             return erros;
         }
-
-        public override string ToString()
-        {
-            return $"Id: {Id} | Nome: {Nome} | Telefone: {Telefone} | CNPJ: {Cnpj}";
-        }
     }
 }

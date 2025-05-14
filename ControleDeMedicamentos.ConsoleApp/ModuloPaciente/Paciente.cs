@@ -25,6 +25,7 @@ public class Paciente : EntidadeBase<Paciente>
     {
         Nome = registroEditado.Nome;
         Telefone = registroEditado.Telefone;
+        CartaoSUS = registroEditado.CartaoSUS;
     }
 
     public override string Validar()
@@ -44,10 +45,5 @@ public class Paciente : EntidadeBase<Paciente>
             erros += "O campo 'Cartão do SUS' é precisa conter 15 números.\n";
 
         return erros;
-    }
-
-    public override string ToString()
-    {
-        return $"Id: {Id} | Nome: {Nome} | Telefone: {Telefone} | Cartão SUS: {CartaoSUS}";
     }
 }

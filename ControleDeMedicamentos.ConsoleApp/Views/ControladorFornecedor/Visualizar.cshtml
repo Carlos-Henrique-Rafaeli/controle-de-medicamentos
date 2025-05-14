@@ -1,8 +1,6 @@
-﻿@using ControleDeMedicamentos.ConsoleApp.ModuloFornecedores;
+﻿@using ControleDeMedicamentos.ConsoleApp.Models;
 
-@{
-    List<Fornecedor> fornecedores = ViewBag.Fornecedores;
-}
+@model VisualizarFornecedoresViewModel;
 
 <!DOCTYPE html>
 <html>
@@ -24,7 +22,7 @@
     <h3>Visualização de Fornecedores</h3>
 
     <ul>
-        @foreach (Fornecedor f in fornecedores)
+        @foreach (DetalhesFornecedorViewModel f in Model.Registros)
         {
             <li>
                 @f.ToString() / <a href="/fornecedores/editar/@f.Id">Editar</a> /

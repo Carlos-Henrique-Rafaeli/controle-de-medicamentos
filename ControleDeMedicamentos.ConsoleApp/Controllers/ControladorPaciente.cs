@@ -1,4 +1,6 @@
 ﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
+using ControleDeMedicamentos.ConsoleApp.Extensions;
+using ControleDeMedicamentos.ConsoleApp.Models;
 using ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
@@ -11,25 +13,27 @@ public class ControladorPaciente : Controller
     [HttpGet("cadastrar")]
     public IActionResult ExibirFormularioCadastro()
     {
-        return View("Cadastrar");
+        CadastrarPacienteViewModel cadastrarVM = new CadastrarPacienteViewModel();
+        
+        return View("Cadastrar", cadastrarVM);
     }
 
     [HttpPost("cadastrar")]
-    public IActionResult Cadastrar(
-        [FromForm] string nome, 
-        [FromForm] string telefone, 
-        [FromForm] string sus)
+    public IActionResult Cadastrar(CadastrarPacienteViewModel cadastrarVM)
     {
         ContextoDados contextoDados = new ContextoDados(true);
         IRepositorioPaciente repositorioPaciente = new RepositorioPaciente(contextoDados);
 
-        Paciente novoPaciente = new Paciente(nome, telefone, sus);
+        Paciente novoPaciente = cadastrarVM.ParaEntidade();
 
         repositorioPaciente.CadastrarRegistro(novoPaciente);
 
-        ViewBag.Mensagem = $"O registro \"{novoPaciente.Nome}\" foi cadastrado com sucesso!";
+        NotificacaoViewModel notificacaoVM = new NotificacaoViewModel(
+            "Paciente Cadastrado!",
+            $"O registro \"{novoPaciente.Nome}\" foi cadastrado com sucesso!"
+        );
 
-        return View("Notificacao");
+        return View("Notificacao", notificacaoVM);
     }
 
     [HttpGet("editar/{id:int}")]
@@ -40,28 +44,32 @@ public class ControladorPaciente : Controller
 
         Paciente pacienteSelecionado = repositorioPaciente.SelecionarRegistroPorId(id);
 
-        ViewBag.Paciente = pacienteSelecionado;
+        EditarPacienteViewModel editarVM = new EditarPacienteViewModel(
+            id,
+            pacienteSelecionado.Nome,
+            pacienteSelecionado.Telefone,
+            pacienteSelecionado.CartaoSUS
+        );
 
-        return View("Editar");
+        return View("Editar", editarVM);
     }
 
     [HttpPost("editar/{id:int}")]
-    public IActionResult Editar(
-        [FromRoute] int id, 
-        [FromForm] string nome,
-        [FromForm] string telefone,
-        [FromForm] string sus)
+    public IActionResult Editar([FromRoute] int id, EditarPacienteViewModel editarVM)
     {
         ContextoDados contextoDados = new ContextoDados(true);
         IRepositorioPaciente repositorioPaciente = new RepositorioPaciente(contextoDados);
 
-        Paciente fornecedorAtualizado = new Paciente(nome, telefone, sus);
+        Paciente pacienteAtualizado = editarVM.ParaEntidade();
 
-        repositorioPaciente.EditarRegistro(id, fornecedorAtualizado);
+        repositorioPaciente.EditarRegistro(id, pacienteAtualizado);
 
-        ViewBag.Mensagem = $"O registro \"{fornecedorAtualizado.Nome}\" foi editado com sucesso!";
+        NotificacaoViewModel notificacaoVM = new NotificacaoViewModel(
+            "Paciente Editado!",
+            $"O registro \"{pacienteAtualizado.Nome}\" foi editado com sucesso!"
+        );
 
-        return View("Notificacao");
+        return View("Notificacao", notificacaoVM);
     }
 
     [HttpGet("excluir/{id:int}")]
@@ -72,9 +80,12 @@ public class ControladorPaciente : Controller
 
         Paciente pacienteSelecionado = repositorioPaciente.SelecionarRegistroPorId(id);
 
-        ViewBag.Paciente = pacienteSelecionado;
+        ExcluirPacienteViewModel excluirVM = new ExcluirPacienteViewModel(
+            pacienteSelecionado.Id,
+            pacienteSelecionado.Nome
+        );
 
-        return View("Excluir");
+        return View("Excluir", excluirVM);
     }
 
     [HttpPost("excluir/{id:int}")]
@@ -85,9 +96,12 @@ public class ControladorPaciente : Controller
 
         repositorioPaciente.ExcluirRegistro(id);
 
-        ViewBag.Mensagem = "O registro foi excluído com sucesso!";
+        NotificacaoViewModel notificacaoVM = new NotificacaoViewModel(
+            "Funcionário Excluído!",
+            "O registro foi excluído com sucesso!"
+        );
 
-        return View("Notificacao");
+        return View("Notificacao", notificacaoVM);
     }
 
     [HttpGet("visualizar")]
@@ -98,8 +112,8 @@ public class ControladorPaciente : Controller
 
         List<Paciente> pacientes = repositorioPaciente.SelecionarRegistros();
 
-        ViewBag.Pacientes = pacientes;
+        VisualizarPacientesViewModel visualizarVM = new VisualizarPacientesViewModel(pacientes);
 
-        return View("Visualizar");
+        return View("Visualizar", visualizarVM);
     }
 }

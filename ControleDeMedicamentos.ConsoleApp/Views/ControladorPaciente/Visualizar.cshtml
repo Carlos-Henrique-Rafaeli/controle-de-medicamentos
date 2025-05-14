@@ -1,8 +1,6 @@
-﻿@using ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
+﻿@using ControleDeMedicamentos.ConsoleApp.Models;
 
-@{
-    List<Paciente> pacientes = ViewBag.Pacientes;
-}
+@model VisualizarPacientesViewModel;
 
 <!DOCTYPE html>
 <html>
@@ -24,7 +22,7 @@
     <h3>Visualização de Pacientes</h3>
 
     <ul>
-        @foreach (Paciente p in pacientes)
+        @foreach (DetalhesPacienteViewModel p in Model.Registros)
         {
             <li>@p.ToString() / <a href="/pacientes/editar/@p.Id">Editar</a> / <a href="/pacientes/excluir/@p.Id">Excluir</a> </li>
         }

@@ -1,8 +1,6 @@
-﻿@using ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
+﻿@using ControleDeMedicamentos.ConsoleApp.Models;
 
-@{
-    Paciente p = ViewBag.Paciente;
-}
+@model EditarPacienteViewModel;
 
 <!Doctype html>
 <html>
@@ -24,22 +22,22 @@
 
         <h3>Edição de Paciente</h3>
 
-        <form action="/pacientes/editar/@p.Id" method="post">
+        <form action="/pacientes/editar/@Model.Id" method="post">
             <label>Nome do Paciente:</label>
             <br />
-            <input type="text" name="nome" value="@p.Nome"/>
+            <input type="text" name="nome" value="@Model.Nome"/>
 
             <br />
 
             <label>Telefone do Paciente:</label>
             <br />
-            <input type="text" name="telefone" value="@p.Telefone"/>
+            <input type="text" name="telefone" value="@Model.Telefone"/>
 
             <br />
 
             <label>Cartão SUS do Paciente:</label>
             <br />
-            <input type="text" name="sus" value="@p.CartaoSUS"/>
+            <input type="text" name="cartaoSus" value="@Model.CartaoSUS"/>
             <hr />
 
             <button type="submit">Gravar</button>
