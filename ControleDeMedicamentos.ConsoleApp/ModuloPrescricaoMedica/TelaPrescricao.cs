@@ -56,10 +56,10 @@ public class TelaPrescricao : TelaBase<Prescricao>, ITelaCrud
         }
 
         Console.Write("Informe a dosagem do medicamento: ");
-        string dosagem = Console.ReadLine() ?? string.Empty;
+        int dosagem = int.TryParse(Console.ReadLine(), out int valorDosagem) ? valorDosagem : 0;
         
         Console.Write("Informe o periodo: ");
-        string periodo = Console.ReadLine() ?? string.Empty;
+        int periodo = int.TryParse(Console.ReadLine(), out int valorPeriodo) ? valorPeriodo : 0;
 
         Prescricao prescricao = new Prescricao(crm, medicamento, dosagem, periodo);
 

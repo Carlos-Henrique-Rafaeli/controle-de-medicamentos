@@ -1,0 +1,58 @@
+﻿@using ControleDeMedicamentos.ConsoleApp.Models;
+
+@model CadastrarPrescricaoViewModel;
+
+<!Doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Cadastro de Prescrição - Gestão de Medicamentos</title>
+    </head>
+
+    <body>
+        <h1>Gestão de Medicamentos</h1>
+
+        <hr />
+
+        <a href="/">Página Inicial</a> |
+        <a href="/prescricoes/visualizar">Visualizar Prescrições</a>
+
+        <hr />
+
+        <h3>Cadastro de Medicamento</h3>
+
+        <form action="/prescricoes/cadastrar" method="post">
+            <label>CRM da Prescrição:</label>
+            <br />
+            <input type="text" name="crm" />
+
+            <br />
+
+            <label for="MedicamentoId">Medicamento da Prescrição:</label>
+            <br />
+            <select name="MedicamentoId" id="MedicamentoId">
+            @foreach (var m in Model.MedicamentosDisponiveis)
+            {
+                <option value="@m.Id">@m.Nome</option>
+            }
+            </select>
+
+            <br />
+
+            <label>Dosagem por Dia da Prescrição:</label>
+            <br />
+            <input type="text" name="dosagem" />
+            
+            <br />
+
+            <label>Período em Dias da Prescrição:</label>
+            <br />
+            <input type="text" name="periodo" />
+            
+            <hr />
+
+            <button type="submit">Gravar</button>
+
+        </form>
+    </body>
+</html>

@@ -8,14 +8,14 @@ public class Prescricao : EntidadeBase<Prescricao>
     public string CRM { get; set; }
     public DateTime DATA { get; set; }
     public Medicamento Medicamento { get; set; }
-    public string Dosagem { get; set; }
-    public string Periodo  { get; set; }
+    public int Dosagem { get; set; }
+    public int Periodo  { get; set; }
 
     public Prescricao()
     {
     }
 
-    public Prescricao(string crm, Medicamento medicamento , string dosagem , string periodo) : this()
+    public Prescricao(string crm, Medicamento medicamento , int dosagem , int periodo) : this()
     {
         CRM = crm;
         Medicamento = medicamento;

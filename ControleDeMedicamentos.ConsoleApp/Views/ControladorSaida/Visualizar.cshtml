@@ -1,0 +1,31 @@
+﻿@using ControleDeMedicamentos.ConsoleApp.Models;
+
+@model VisualizarSaidasViewModel;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Visualização de Requisições - Gestão de Medicamentos</title>
+</head>
+
+<body>
+    <h1>Gestão de Medicamentos</h1>
+
+    <hr />
+
+    <a href="/">Página Inicial</a> |
+    <a href="/saidas/cadastrar">Cadastrar Nova Requisição</a> |
+
+    <hr />
+
+    <h3>Visualização de Requisições</h3>
+
+    <ul>
+        @foreach (var p in Model.Registros)
+        {
+            <li>@p.ToString() / <a href="/saidas/excluir/@p.Id">Excluir</a> </li>
+        }
+    </ul>
+</body>
+</html>
