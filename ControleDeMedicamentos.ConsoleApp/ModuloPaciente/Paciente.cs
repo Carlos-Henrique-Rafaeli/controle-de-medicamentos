@@ -25,7 +25,6 @@ public class Paciente : EntidadeBase<Paciente>
     {
         Nome = registroEditado.Nome;
         Telefone = registroEditado.Telefone;
-        CartaoSUS = registroEditado.CartaoSUS;
     }
 
     public override string Validar()

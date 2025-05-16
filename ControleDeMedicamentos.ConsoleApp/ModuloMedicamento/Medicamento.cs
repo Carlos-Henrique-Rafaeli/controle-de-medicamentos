@@ -46,7 +46,6 @@ public class Medicamento : EntidadeBase<Medicamento>
     {
         Nome = registroEditado.Nome;
         Descricao = registroEditado.Descricao;
-        Estoque = registroEditado.Estoque;
         Fornecedor = registroEditado.Fornecedor;
     }
 

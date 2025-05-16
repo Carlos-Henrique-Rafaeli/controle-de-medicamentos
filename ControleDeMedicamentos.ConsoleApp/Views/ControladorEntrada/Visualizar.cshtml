@@ -1,0 +1,31 @@
+﻿@using ControleDeMedicamentos.ConsoleApp.Models;
+
+@model VisualizarEntradasViewModel;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Visualização de Entradas - Gestão de Medicamentos</title>
+</head>
+
+<body>
+    <h1>Gestão de Medicamentos</h1>
+
+    <hr />
+
+    <a href="/">Página Inicial</a> |
+    <a href="/entradas/cadastrar">Cadastrar Nova Entrada</a> |
+
+    <hr />
+
+    <h3>Visualização de Entradas</h3>
+
+    <ul>
+        @foreach (var p in Model.Registros)
+        {
+            <li>@p.ToString() / <a href="/entradas/excluir/@p.Id">Excluir</a> </li>
+        }
+    </ul>
+</body>
+</html>

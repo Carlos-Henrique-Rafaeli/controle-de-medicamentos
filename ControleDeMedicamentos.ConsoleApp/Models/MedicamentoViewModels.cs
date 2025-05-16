@@ -57,7 +57,6 @@ public class EditarMedicamentoViewModel : FormularioMedicamentoViewModel
         int id, 
         string nome, 
         string descricao, 
-        int estoque, 
         int fornecedorId, 
         List<Fornecedor> fornecedores
         ) : this()
@@ -65,7 +64,6 @@ public class EditarMedicamentoViewModel : FormularioMedicamentoViewModel
         Id = id;
         Nome = nome;
         Descricao = descricao;
-        Estoque = estoque;
         FornecedorId = fornecedorId;
 
         foreach (var fornecedor in fornecedores)

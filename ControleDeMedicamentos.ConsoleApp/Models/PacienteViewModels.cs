@@ -29,12 +29,11 @@ public class EditarPacienteViewModel : FormularioPacienteViewModel
 
     public EditarPacienteViewModel() { }
 
-    public EditarPacienteViewModel(int id, string nome, string telefone, string cartaoSus) : this()
+    public EditarPacienteViewModel(int id, string nome, string telefone) : this()
     {
         Id = id;
         Nome = nome;
         Telefone = telefone;
-        CartaoSUS = cartaoSus;
     }
 }
 

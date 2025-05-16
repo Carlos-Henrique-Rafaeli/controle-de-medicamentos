@@ -60,7 +60,6 @@ public class ControladorMedicamento : Controller
             id,
             medicamento.Nome,
             medicamento.Descricao,
-            medicamento.Estoque,
             medicamento.Fornecedor.Id,
             fornecedores
         );

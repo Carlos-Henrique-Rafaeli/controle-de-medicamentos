@@ -1,0 +1,63 @@
+﻿@using ControleDeMedicamentos.ConsoleApp.Models;
+
+@model CadastrarEntradaViewModel;
+
+<!Doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Cadastro de Entrada - Gestão de Medicamentos</title>
+    </head>
+
+    <body>
+        <h1>Gestão de Medicamentos</h1>
+
+        <hr />
+
+        <a href="/">Página Inicial</a> |
+        <a href="/entradas/visualizar">Visualizar Entradas</a>
+
+        <hr />
+
+        <h3>Cadastro de Medicamento</h3>
+
+        <form action="/entradas/cadastrar" method="post">
+            <label>Data da Entrada:</label>
+            <br />
+            <input type="date" name="data" />
+
+            <br />
+
+            <label for="FuncionarioId">Funcionario da Entrada:</label>
+            <br />
+            <select name="FuncionarioId" id="FuncionarioId">
+            @foreach (var f in Model.FuncionariosDisponiveis)
+            {
+                <option value="@f.Id">@f.Nome</option>
+            }
+            </select>
+
+            <br />
+
+            <label for="MedicamentoId">Medicamento da Entrada:</label>
+            <br />
+            <select name="MedicamentoId" id="MedicamentoId">
+            @foreach (var m in Model.MedicamentosDisponiveis)
+            {
+                <option value="@m.Id">@m.Nome</option>
+            }
+            </select>
+
+            <br />
+
+            <label>Quantidade do Medicamento:</label>
+            <br />
+            <input type="text" name="quantidade" />
+
+            <hr />
+
+            <button type="submit">Gravar</button>
+
+        </form>
+    </body>
+</html>

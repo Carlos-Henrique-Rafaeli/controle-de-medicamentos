@@ -47,8 +47,7 @@ public class ControladorPaciente : Controller
         EditarPacienteViewModel editarVM = new EditarPacienteViewModel(
             id,
             pacienteSelecionado.Nome,
-            pacienteSelecionado.Telefone,
-            pacienteSelecionado.CartaoSUS
+            pacienteSelecionado.Telefone
         );
 
         return View("Editar", editarVM);
