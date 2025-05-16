@@ -1,0 +1,57 @@
+﻿@using ControleDeMedicamentos.ConsoleApp.Models;
+
+@model EditarMedicamentoViewModel;
+
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Edição de Medicamento - Gestão de Medicamentos</title>
+</head>
+
+<body>
+    <h1>Gestão de Medicamentos</h1>
+
+    <hr />
+
+    <a href="/">Página Inicial</a> |
+    <a href="/medicamentos/visualizar">Visualizar Medicamentos</a> |
+
+    <hr />
+
+    <h3>Edição de Medicamento</h3>
+
+    <form action="/medicamentos/editar/@Model.Id" method="post">
+        <label>Nome do Medicamento:</label>
+        <br />
+        <input type="text" name="nome" value="@Model.Nome"/>
+
+        <br />
+
+        <label>Descrição do Medicamento:</label>
+        <br />
+        <input type="text" name="descricao" value="@Model.Descricao"/>
+
+        <br />
+
+        <label>Estoque do Medicamento:</label>
+        <br />
+        <input type="text" name="estoque" value="@Model.Estoque"/>
+
+        <br />
+        <label for="FornecedorId">Fornecedor do Medicamento:</label>
+        <br />
+        <select name="FornecedorId" id="FornecedorId">
+            @foreach (var fornecedor in Model.FornecedoresDisponiveis)
+            {
+                <option value="@fornecedor.Id" @(fornecedor.Id == Model.FornecedorId ? "selected" : "")>@fornecedor.Nome</option>
+            }
+        </select>
+
+        <hr />
+
+        <button type="submit">Gravar</button>
+
+    </form>
+</body>
+</html>
