@@ -124,6 +124,6 @@ public class DetalhesEntradaViewModel
 
     public override string ToString()
     {
-        return $"Id: {Id} | Data: {Data:d} | Funcionário: {NomeFuncionario} | Medicamento: {NomeMedicamento} Quantidade: {Quantidade}";
+        return $"Id: {Id} | Data: {Data:d} | Funcionário: {NomeFuncionario} | Medicamento: {NomeMedicamento} | Quantidade: {Quantidade}";
     }
 }

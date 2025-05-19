@@ -10,23 +10,29 @@
     </head>
 
     <body>
-        <h1>Gestão de Medicamentos</h1>
+        <nav>
+            <h2>Gestão de Medicamentos</h2>
+            <ul>
+                <li><a href="/">Página Inicial</a></li>
+                <li><a href="/funcionarios/cadastrar">Cadastrar Novo Funcionário</a></li>
+                <li><a href="/funcionarios/visualizar">Visualizar Funcionários</a></li>
+            </ul>
+        </nav>
 
-        <hr />
+        <header>
+            <h2>Exclusão de Funcionário</h2>
+        </header>
 
-        <a href="/">Página Inicial</a> /
-        <a href="/funcionarios/cadastrar">Cadastrar Novo Funcionário</a> /
-        <a href="/funcionarios/visualizar">Visualizar Funcionários</a>
+        <main>
+            <p>Você tem certeza que deseja excluir o registro "@Model.Nome"?</p>
 
-        <hr />
-
-        <h3>Exclusão de Funcionário</h3>
-
-        <p>Você tem certeza que deseja excluir o registro "@Model.Nome"?</p>
-
-        <form action="/funcionarios/excluir/@Model.Id" method="post">
-            <button type="submit">Confirmar</button>
-            <a href="/funcionarios/visualizar">Voltar</a>
-        </form>
+            <form action="/funcionarios/excluir/@Model.Id" method="post">
+                <div class="option">
+                    <button type="submit">Confirmar</button>
+                    <br/>
+                    <a href="/funcionarios/visualizar">Voltar</a>
+                </div>
+            </form>
+        </main>
     </body>
 </html>

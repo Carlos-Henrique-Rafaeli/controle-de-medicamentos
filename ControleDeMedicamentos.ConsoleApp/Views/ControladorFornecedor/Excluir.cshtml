@@ -8,26 +8,117 @@
     <head>
         <meta charset="utf-8" />
         <title>Exclusão de Fornecedores - Gestão de Medicamentos</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #333333;
+            color: white;
+            font-family: Tahoma, sans-serif;
+        }
+
+        a {
+            color: skyblue;
+            text-decoration: none;
+        }
+
+            a:hover {
+                color: deepskyblue;
+            }
+
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 96px;
+            justify-content: space-between;
+            padding: 0 128px;
+        }
+
+            nav > h2 {
+                margin: 0;
+                color: dodgerblue;
+            }
+
+            nav > ul {
+                display: flex;
+                gap: 32px;
+                list-style: none;
+            }
+
+        header {
+            padding: 0 192px;
+        }
+
+        main {
+            padding: 0 192px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+        }
+
+            main > ul {
+                list-style: none;
+            }
+
+        .option {
+            padding: 0 16px;
+            width: 256px;
+        }
+
+            .option > input[type=text] {
+                outline: none;
+                width: 100%;
+                padding: 12px 24px;
+                margin: 8px 0;
+                box-sizing: border-box;
+            }
+
+            .option > input[type=date] {
+                padding: 8px 12px;
+                margin: 8px 0;
+            }
+
+            .option > button {
+                background-color: #333333;
+                color: white;
+                border: 2px solid dodgerblue;
+                border-radius: 8px;
+                font-size: 32px;
+                transition-duration: 0.4s;
+            }
+
+                .option > button:hover {
+                    background-color: dodgerblue;
+                }
+
+    </style>
     </head>
 
     <body>
-        <h1>Gestão de Medicamentos</h1>
+        <nav>
+            <h2>Gestão de Medicamentos</h2>
+            <ul>
+                <li><a href="/">Página Inicial</a></li>
+                <li><a href="/fornecedores/cadastrar">Cadastrar Novo Fornecedor</a></li>
+                <li><a href="/fornecedores/visualizar">Visualizar Fornecedores</a></li>
+            </ul>
+        </nav>
 
-        <hr />
+        <header>
+            <h2>Exclusão de Fornecedor</h2>
+        </header>
 
-        <a href="/">Página Inicial</a> /
-        <a href="/fornecedores/cadastrar">Cadastrar Novo Fornecedor</a> /
-        <a href="/fornecedores/visualizar">Visualizar Fornecedores</a>
+        <main>
+            <p>Você tem certeza que deseja excluir o registro "@Model.Nome"?</p>
 
-        <hr />
-
-        <h3>Exclusão de Fornecedor</h3>
-
-        <p>Você tem certeza que deseja excluir o registro "@Model.Nome"?</p>
-
-        <form action="/fornecedores/excluir/@Model.Id" method="post">
-            <button type="submit">Confirmar</button>
-            <a href="/fornecedores/visualizar">Voltar</a>
-        </form>
+            <form action="/fornecedores/excluir/@Model.Id" method="post">
+                <div class="option">
+                <button type="submit">Confirmar</button>
+                <br/>
+                <a href="/fornecedores/visualizar">Voltar</a>
+                </div>
+            </form>
+        </main>
     </body>
 </html>

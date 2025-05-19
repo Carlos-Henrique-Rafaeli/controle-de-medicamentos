@@ -7,40 +7,129 @@
     <head>
         <meta charset="utf-8" />
         <title>Cadastro de Funcionário - Gestão de Medicamentos</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #333333;
+            color: white;
+            font-family: Tahoma, sans-serif;
+        }
+
+        a {
+            color: skyblue;
+            text-decoration: none;
+        }
+
+            a:hover {
+                color: deepskyblue;
+            }
+
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 96px;
+            justify-content: space-between;
+            padding: 0 128px;
+        }
+
+            nav > h2 {
+                margin: 0;
+                color: dodgerblue;
+            }
+
+            nav > ul {
+                display: flex;
+                gap: 32px;
+                list-style: none;
+            }
+
+        header {
+            padding: 0 192px;
+        }
+
+        main {
+            padding: 0 192px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+        }
+
+            main > ul {
+                list-style: none;
+            }
+
+        .option {
+            padding: 0 16px;
+            width: 256px;
+        }
+
+            .option > input[type=text] {
+                outline: none;
+                width: 100%;
+                padding: 12px 24px;
+                margin: 8px 0;
+                box-sizing: border-box;
+            }
+
+            .option > input[type=date] {
+                padding: 8px 12px;
+                margin: 8px 0;
+            }
+
+            .option > button {
+                background-color: #333333;
+                color: white;
+                border: 2px solid dodgerblue;
+                border-radius: 8px;
+                font-size: 32px;
+                transition-duration: 0.4s;
+            }
+
+                .option > button:hover {
+                    background-color: dodgerblue;
+                }
+    </style>
     </head>
 
     <body>
-        <h1>Gestão de Medicamentos</h1>
+        <nav>
+            <h2>Gestão de Medicamentos</h2>
+            <ul>
+                <li><a href="/">Página Inicial</a></li>
+                <li><a href="/funcionarios/visualizar">Visualizar Funcionários</a></li>
+            </ul>
+        </nav>
 
-        <hr />
+        <header>
+            <h2>Cadastro de Funcionário</h2>
+        </header>
 
-        <a href="/">Página Inicial</a> |
-        <a href="/funcionarios/visualizar">Visualizar Funcionários</a>
+        <main>
+            <form action="/funcionarios/cadastrar" method="post">
+                <div class="option">
+                    <label>Nome do Funcionário:</label>
+                    <br />
+                    <input type="text" name="nome" />
 
-        <hr />
+                    <br />
 
-        <h3>Cadastro de Funcionário</h3>
+                    <label>Telefone do Funcionário:</label>
+                    <br />
+                    <input type="text" name="telefone" />
 
-        <form action="/funcionarios/cadastrar" method="post">
-            <label>Nome do Funcionário:</label>
-            <br />
-            <input type="text" name="nome" />
+                    <br />
 
-            <br />
+                    <label>CPF do Funcionário:</label>
+                    <br />
+                    <input type="text" name="cpf" />
+                    
+                    <br />
 
-            <label>Telefone do Funcionário:</label>
-            <br />
-            <input type="text" name="telefone" />
-
-            <br />
-
-            <label>CPF do Funcionário:</label>
-            <br />
-            <input type="text" name="cpf" />
-            <hr />
-
-            <button type="submit">Gravar</button>
-
-        </form>
+                    <button type="submit">Gravar</button>
+                </div>
+            </form>
+        </main>
     </body>
 </html>

@@ -7,25 +7,81 @@
 <head>
     <meta charset="utf-8" />
     <title>Visualização de Prescrições - Gestão de Medicamentos</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #333333;
+            color: white;
+            font-family: Tahoma, sans-serif;
+        }
+
+        a {
+            color: skyblue;
+            text-decoration: none;
+        }
+
+            a:hover {
+                color: deepskyblue;
+            }
+
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 96px;
+            justify-content: space-between;
+            padding: 0 128px;
+        }
+
+            nav > h2 {
+                margin: 0;
+                color: dodgerblue;
+            }
+
+            nav > ul {
+                display: flex;
+                gap: 32px;
+                list-style: none;
+            }
+
+        header {
+            padding: 0 192px;
+        }
+
+        main {
+            padding: 0 192px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+        }
+
+            main > ul {
+                list-style: none;
+            }
+    </style>
 </head>
 
 <body>
-    <h1>Gestão de Medicamentos</h1>
-
-    <hr />
-
-    <a href="/">Página Inicial</a> |
-    <a href="/prescricoes/cadastrar">Cadastrar Nova Prescrição</a> |
-
-    <hr />
-
-    <h3>Visualização de Prescrições</h3>
-
-    <ul>
+    <nav>
+        <h2>Gestão de Medicamentos</h2>
+        <ul>
+            <li><a href="/">Página Inicial</a></li>
+            <li><a href="/prescricoes/cadastrar">Cadastrar Nova Prescrição</a></li>
+        </ul>
+    </nav>
+    
+    <header>
+        <h2>Visualização de Prescrições</h2>
+    </header>
+    
+    <main>
+        <ul>
         @foreach (var p in Model.Registros)
         {
-            <li>@p.ToString() / <a href="/prescricoes/excluir/@p.Id">Excluir</a> </li>
+            <li>@p.ToString() | <a href="/prescricoes/excluir/@p.Id">Excluir</a> </li>
         }
     </ul>
+    </main>
 </body>
 </html>

@@ -3,72 +3,154 @@
     <head>
         <meta charset="utf-8" />
         <title>Gestão de Medicamentos</title>
+
+        <style>
+            body {
+                margin: 0;
+                background-color: #333333;
+                color: white;
+                font-family: Tahoma, sans-serif;
+            }
+
+            a {
+                color: skyblue;
+                text-decoration: none;
+            }
+            
+            a:hover {
+                color: deepskyblue;
+            }
+
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 96px;
+
+                justify-content: space-between;
+
+                padding: 0 128px;
+            }
+
+            nav > h2 {
+                margin: 0;
+                color: dodgerblue;
+            }
+
+            nav > ul {
+                display: flex;
+                gap: 32px;
+                list-style: none;
+            }
+
+            header {
+                padding: 0 192px;
+            }
+
+            main {
+                padding: 0 192px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 32px;
+            }
+
+            .card {
+                border: 1px solid skyblue;
+                padding: 0 16px;
+
+                width: 256px;
+                height: 128px;
+            }
+            
+            .card > h3 {
+                text-align: center;
+            }
+        </style>
+
     </head>
 
     <body>
-        <h1>Gestão de Medicamentos</h1>
+        <nav>
+            <h2>Gestão de Medicamentos</h2>
+            <ul>
+                <li><a href="/fornecedores/visualizar">Fornecedores</a></li>
+                <li><a href="/funcionarios/visualizar">Funcionários</a></li>
+                <li><a href="/pacientes/visualizar">Pacientes</a></li>
+                <li><a href="/medicamentos/visualizar">Medicamentos</a></li>
+                <li><a href="/entradas/visualizar">Entradas</a></li>
+                <li><a href="/prescricoes/visualizar">Prescrições</a></li>
+                <li><a href="/saidas/visualizar">Requisições</a></li>
+            </ul>
 
-        <hr />
+        </nav>
 
-        <h3>Fornecedores</h3>
+        <header>
+            <h2>Página Inicial</h2>
+        </header>
 
-        <ul>
-            <li><a href="/fornecedores/cadastrar">Cadastrar Novo Fornecedor</a></li>
-            <li><a href="/fornecedores/visualizar">Visualizar Fornecedores</a></li>
-        </ul>
+        <main>
+            <div class="card">
+                <h3>Fornecedores</h3>
 
-        <hr />
+                <ul>
+                    <li><a href="/fornecedores/cadastrar">Cadastrar Novo Fornecedor</a></li>
+                    <li><a href="/fornecedores/visualizar">Visualizar Fornecedores</a></li>
+                </ul>
+            </div>
 
-        <h3>Funcionários</h3>
+            <div class="card">
+                <h3>Funcionários</h3>
 
-        <ul>
-            <li><a href="/funcionarios/cadastrar">Cadastrar Funcionário</a></li>
-            <li><a href="/funcionarios/visualizar">Visualizar Funcionários</a></li>
-        </ul>
+                <ul>
+                    <li><a href="/funcionarios/cadastrar">Cadastrar Funcionário</a></li>
+                    <li><a href="/funcionarios/visualizar">Visualizar Funcionários</a></li>
+                </ul>
+            </div>
 
-        <hr />
+            <div class="card">
+                <h3>Pacientes</h3>
 
-        <h3>Pacientes</h3>
+                <ul>
+                    <li><a href="/pacientes/cadastrar">Cadastrar Paciente</a></li>
+                    <li><a href="/pacientes/visualizar">Visualizar Pacientes</a></li>
+                </ul>
+            </div>
 
-        <ul>
-            <li><a href="/pacientes/cadastrar">Cadastrar Paciente</a></li>
-            <li><a href="/pacientes/visualizar">Visualizar Pacientes</a></li>
-        </ul>
+            <div class="card">
+                <h3>Medicamentos</h3>
 
-        <hr />
+                <ul>
+                    <li><a href="/medicamentos/cadastrar">Cadastrar Medicamento</a></li>
+                    <li><a href="/medicamentos/visualizar">Visualizar Medicamentos</a></li>
+                </ul>
+            </div>
 
-        <h3>Medicamentos</h3>
+            <div class="card">
+                <h3>Entradas</h3>
 
-        <ul>
-            <li><a href="/medicamentos/cadastrar">Cadastrar Medicamento</a></li>
-            <li><a href="/medicamentos/visualizar">Visualizar Medicamentos</a></li>
-        </ul>
-        
-        <hr />
+                <ul>
+                    <li><a href="/entradas/cadastrar">Cadastrar Entradas</a></li>
+                    <li><a href="/entradas/visualizar">Visualizar Entradas</a></li>
+                </ul>
+            </div>
 
-        <h3>Entradas</h3>
+            <div class="card">
+                <h3>Prescições</h3>
 
-        <ul>
-            <li><a href="/entradas/cadastrar">Cadastrar Entradas</a></li>
-            <li><a href="/entradas/visualizar">Visualizar Entradas</a></li>
-        </ul>
+                <ul>
+                    <li><a href="/prescricoes/cadastrar">Cadastrar Prescrição</a></li>
+                    <li><a href="/prescricoes/visualizar">Visualizar Prescrições</a></li>
+                </ul>
+            </div>
 
-        <hr />
+            <div class="card">
+                <h3>Requisição de Saída</h3>
 
-        <h3>Prescições</h3>
-
-        <ul>
-            <li><a href="/prescricoes/cadastrar">Cadastrar Prescrição</a></li>
-            <li><a href="/prescricoes/visualizar">Visualizar Prescrições</a></li>
-        </ul>
-
-        <hr />
-
-        <h3>Requisição de Saída</h3>
-
-        <ul>
-            <li><a href="/saidas/cadastrar">Cadastrar Requisição</a></li>
-            <li><a href="/saidas/visualizar">Visualizar Requisições</a></li>
-        </ul>
+                <ul>
+                    <li><a href="/saidas/cadastrar">Cadastrar Requisição</a></li>
+                    <li><a href="/saidas/visualizar">Visualizar Requisições</a></li>
+                </ul>
+            </div>
+        </main>
     </body>
 </html>
