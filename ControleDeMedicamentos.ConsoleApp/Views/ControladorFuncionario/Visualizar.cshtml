@@ -8,23 +8,38 @@
     <meta charset="utf-8" />
     <title>Visualização de Funcionários - Gestão de Medicamentos</title>
     <style>
+        :root {
+            --fundo-principal: #333333;
+            --fundo-secundario: #444444;
+            --borda: #2f2f2f;
+            --color-main: white;
+            --color-normal: skyblue;
+            --color-hover: deepskyblue;
+            --color-dif: dodgerblue;
+        }
+
         body {
             margin: 0;
-            background-color: #333333;
-            color: white;
+            background-color: var(--fundo-principal);
+            color: var(--color-main);
             font-family: Tahoma, sans-serif;
         }
 
         a {
-            color: skyblue;
+            color: var(--color-normal);
             text-decoration: none;
         }
 
             a:hover {
-                color: deepskyblue;
+                color: var(--color-hover);
             }
 
-
+        .a-main {
+            color: var(--color-dif);
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
         nav {
             display: flex;
             flex-wrap: wrap;
@@ -32,11 +47,13 @@
             gap: 96px;
             justify-content: space-between;
             padding: 0 128px;
+            background-color: var(--fundo-secundario);
+            border: 1px solid var(--borda);
         }
 
             nav > h2 {
                 margin: 0;
-                color: dodgerblue;
+                color: var(--color-dif);
             }
 
             nav > ul {
@@ -56,32 +73,82 @@
             gap: 32px;
         }
 
-            main > ul {
-                list-style: none;
+        .button-interaction {
+            padding: 0 80%;
+        }
+
+        .card {
+            border: 4px solid var(--color-normal);
+            border-radius: 8px;
+            padding: 0 16px;
+            width: 256px;
+            height: 256px;
+            background-color: none;
+            transition-duration: 0.4s;
+        }
+
+            .card:hover {
+                background-color: var(--fundo-secundario);
+                border: 4px solid var(--color-hover);
+                transform: scale(1.05);
             }
+
+            .card > h3 {
+                text-align: center;
+            }
+
+        @@media (max-width: 768px) {
+            nav {
+                padding: 20px;
+                justify-content: center;
+            }
+
+            header {
+                padding: 20px;
+            }
+
+            main {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 
 <body>
     <nav>
-        <h2>Gestão de Medicamentos</h2>
+        <a class="a-main" href="/">Gestão de Medicamentos</a>
         <ul>
-            <li><a href="/">Página Inicial</a></li>
-            <li><a href="/funcionarios/cadastrar">Cadastrar Novo Funcionário</a></li>
+            <li><a href="/fornecedores/visualizar">Fornecedores</a></li>
+            <li><a href="/funcionarios/visualizar">Funcionários</a></li>
+            <li><a href="/pacientes/visualizar">Pacientes</a></li>
+            <li><a href="/medicamentos/visualizar">Medicamentos</a></li>
+            <li><a href="/entradas/visualizar">Entradas</a></li>
+            <li><a href="/prescricoes/visualizar">Prescrições</a></li>
+            <li><a href="/saidas/visualizar">Requisições</a></li>
         </ul>
     </nav>
 
     <header>
         <h2>Visualização de Funcionários</h2>
+        <a href="/funcionarios/cadastrar">Cadastrar Novo Funcionário</a>
+        <hr/>
     </header>
 
     <main>
-        <ul>
-            @foreach (DetalhesFuncionarioViewModel f in Model.Registros)
-            {
-                <li>@f.ToString() | <a href="/funcionarios/editar/@f.Id">Editar</a> | <a href="/funcionarios/excluir/@f.Id">Excluir</a> </li>
-            }
-        </ul>
+        @foreach (var f in Model.Registros)
+        {
+            <div class="card">
+                <h3>@f.Nome</h3>
+
+                <p><strong>Telefone: </strong>@f.Telefone</p>
+                <p><strong>CPF: </strong>@f.CPF</p>
+
+                <div class="button-interaction">
+                    <a href="/funcionarios/editar/@f.Id">Editar</a>
+                    <a href="/funcionarios/excluir/@f.Id">Excluir</a>
+                </div>
+            </div>
+        }
     </main>
 </body>
 </html>
