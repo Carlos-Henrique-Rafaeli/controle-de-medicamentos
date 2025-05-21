@@ -2,88 +2,9 @@
 
 @model NotificacaoViewModel;
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>@Model.TituloPagina - Gestão de Medicamentos</title>
-    <style>
-        body {
-            margin: 0;
-            background-color: #333333;
-            color: white;
-            font-family: Tahoma, sans-serif;
-        }
+@{
+    Layout = "_Layout";
+    ViewBag.Titulo = Model.TituloPagina;
+}
 
-        a {
-            color: skyblue;
-            text-decoration: none;
-        }
-
-            a:hover {
-                color: deepskyblue;
-            }
-
-        .a-main {
-            color: var(--color-dif);
-            text-decoration: none;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        nav {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 96px;
-            justify-content: space-between;
-            padding: 0 128px;
-        }
-
-            nav > h2 {
-                margin: 0;
-                color: dodgerblue;
-            }
-
-            nav > ul {
-                display: flex;
-                gap: 32px;
-                list-style: none;
-            }
-
-        header {
-            padding: 0 192px;
-        }
-
-        main {
-            padding: 0 192px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 32px;
-        }
-    </style>
-</head>
-
-<body>
-    <nav>
-        <a class="a-main" href="/">Gestão de Medicamentos</a>
-        <ul>
-            <li><a href="/fornecedores/visualizar">Fornecedores</a></li>
-            <li><a href="/funcionarios/visualizar">Funcionários</a></li>
-            <li><a href="/pacientes/visualizar">Pacientes</a></li>
-            <li><a href="/medicamentos/visualizar">Medicamentos</a></li>
-            <li><a href="/entradas/visualizar">Entradas</a></li>
-            <li><a href="/prescricoes/visualizar">Prescrições</a></li>
-            <li><a href="/saidas/visualizar">Requisições</a></li>
-        </ul>
-    </nav>
-
-    <header>
-        <h2>@Model.TituloPagina</h2>
-    </header>
-
-    <main>
-        <p>@Model.Mensagem</p>
-    </main>
-</body>
-</html>
+@Model.Mensagem

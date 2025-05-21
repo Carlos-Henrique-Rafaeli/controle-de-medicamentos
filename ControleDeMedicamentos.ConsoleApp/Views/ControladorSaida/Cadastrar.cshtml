@@ -2,198 +2,50 @@
 
 @model CadastrarSaidaViewModel;
 
-<!Doctype html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Cadastro de Requisição de Saída - Gestão de Medicamentos</title>
-    <style>
-        :root {
-            --fundo-principal: #333333;
-            --fundo-secundario: #444444;
-            --borda: #2f2f2f;
-            --color-main: white;
-            --color-normal: skyblue;
-            --color-hover: deepskyblue;
-            --color-dif: dodgerblue;
+@{
+    Layout = "_Layout";
+    ViewBag.Titulo = "Cadastro de Requisição de Saída";
+}
+
+@section Style {
+    <link rel="stylesheet" href="~/Register.css" />
+}
+
+@section Header {
+    <a href="/saidas/visualizar">Visualizar Requisições</a>
+}
+
+<form action="/saidas/cadastrar" method="post">
+    <label>Data da Requisição:</label>
+    <input type="date" name="data" />
+
+    <label for="PacienteId">Paciente da Requisição:</label>
+    <select name="PacienteId" id="PacienteId">
+        @foreach (var m in Model.PacientesDisponiveis)
+        {
+            <option value="@m.Id">@m.Nome</option>
         }
+    </select>
 
-        body {
-            margin: 0;
-            background-color: var(--fundo-principal);
-            color: var(--color-main);
-            font-family: Tahoma, sans-serif;
+    <label for="PrescricaoId">Prescrição da Requisição:</label>
+    <select name="PrescricaoId" id="PrescricaoId">
+        @foreach (var m in Model.PrescricoesDisponiveis)
+        {
+            <option value="@m.Id">@m.Nome</option>
         }
+    </select>
 
-        a {
-            color: var(--color-normal);
-            text-decoration: none;
+    <label for="MedicamentoId">Medicamento da Prescrição:</label>
+    <select name="MedicamentoId" id="MedicamentoId">
+        @foreach (var m in Model.MedicamentosDisponiveis)
+        {
+            <option value="@m.Id">@m.Nome</option>
         }
+    </select>
 
-            a:hover {
-                color: var(--color-hover);
-            }
+    <div class="button-interaction">
+        <button type="submit" id="botaoCustom">Confirmar</button>
+        <a type="button" id="botaoCustom" href="/saidas/visualizar">Voltar</a>
+    </div>
+</form>
 
-        .a-main {
-            color: var(--color-dif);
-            text-decoration: none;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        nav {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 96px;
-            justify-content: space-between;
-            padding: 0 128px;
-            background-color: var(--fundo-secundario);
-            border: 1px solid var(--borda);
-        }
-
-            nav > ul {
-                display: flex;
-                gap: 32px;
-                list-style: none;
-            }
-
-        header {
-            padding: 0 192px;
-        }
-
-        main {
-            padding: 0 192px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 32px;
-        }
-
-        @@media (max-width: 768px) {
-            nav {
-                padding: 20px;
-                justify-content: center;
-            }
-
-            header {
-                padding: 20px;
-            }
-
-            main {
-                padding: 20px;
-            }
-        }
-
-            main > ul {
-                list-style: none;
-            }
-
-        .option {
-            padding: 0 16px;
-            width: 256px;
-        }
-
-            .option > select {
-                appearance: none;
-                width: 100%;
-                padding: 12px 24px;
-                margin: 8px 0;
-                font-size: 16px;
-            }
-
-            .option > input[type=text] {
-                outline: none;
-                width: 100%;
-                padding: 12px 24px;
-                margin: 8px 0;
-                box-sizing: border-box;
-            }
-
-            .option > input[type=date] {
-                padding: 8px 12px;
-                margin: 8px 0;
-            }
-
-            .option > button {
-                background-color: #333333;
-                color: white;
-                border: 2px solid dodgerblue;
-                border-radius: 8px;
-                font-size: 32px;
-                transition-duration: 0.4s;
-            }
-
-                .option > button:hover {
-                    background-color: dodgerblue;
-                }
-    </style>
-    </head>
-
-    <body>
-        <nav>
-            <a class="a-main" href="/">Gestão de Medicamentos</a>
-            <ul>
-                <li><a href="/fornecedores/visualizar">Fornecedores</a></li>
-                <li><a href="/funcionarios/visualizar">Funcionários</a></li>
-                <li><a href="/pacientes/visualizar">Pacientes</a></li>
-                <li><a href="/medicamentos/visualizar">Medicamentos</a></li>
-                <li><a href="/entradas/visualizar">Entradas</a></li>
-                <li><a href="/prescricoes/visualizar">Prescrições</a></li>
-                <li><a href="/saidas/visualizar">Requisições</a></li>
-            </ul>
-        </nav>
-
-        <header>
-            <h2>Cadastro de Requisição de Saída</h2>
-            <a href="/saidas/visualizar">Visualizar Requisições</a>
-            <hr/>
-        </header>
-
-        <main>
-            <form action="/saidas/cadastrar" method="post">
-                <div class="option">
-                    <label>Data da Requisição:</label>
-                    <br />
-                    <input type="date" name="data" />
-
-                    <br />
-
-                    <label for="PacienteId">Paciente da Requisição:</label>
-                    <br />
-                    <select name="PacienteId" id="PacienteId">
-                        @foreach (var m in Model.PacientesDisponiveis)
-                        {
-                            <option value="@m.Id">@m.Nome</option>
-                        }
-                    </select>
-
-                    <br />
-
-                    <label for="PrescricaoId">Prescrição da Requisição:</label>
-                    <br />
-                    <select name="PrescricaoId" id="PrescricaoId">
-                        @foreach (var m in Model.PrescricoesDisponiveis)
-                        {
-                            <option value="@m.Id">@m.Nome</option>
-                        }
-                    </select>
-
-                    <br />
-
-                    <label for="MedicamentoId">Medicamento da Prescrição:</label>
-                    <br />
-                    <select name="MedicamentoId" id="MedicamentoId">
-                        @foreach (var m in Model.MedicamentosDisponiveis)
-                        {
-                            <option value="@m.Id">@m.Nome</option>
-                        }
-                    </select>
-
-                    <br />
-
-                    <button type="submit">Gravar</button>
-                </div>
-            </form>
-        </main>
-    </body>
-</html>

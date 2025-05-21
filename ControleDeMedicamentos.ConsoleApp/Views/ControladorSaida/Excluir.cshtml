@@ -2,152 +2,26 @@
 
 @model ExcluirSaidaViewModel;
 
-<!Doctype html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Exclusão de Requisição de Saída - Gestão de Medicamentos</title>
-    <style>
-        :root {
-            --fundo-principal: #333333;
-            --fundo-secundario: #444444;
-            --borda: #2f2f2f;
-            --color-main: white;
-            --color-normal: skyblue;
-            --color-hover: deepskyblue;
-            --color-dif: dodgerblue;
-        }
+@{
+    Layout = "_Layout";
+    ViewBag.Titulo = "Exclusão de Requisição de Saída";
+}
 
-        body {
-            margin: 0;
-            background-color: var(--fundo-principal);
-            color: var(--color-main);
-            font-family: Tahoma, sans-serif;
-        }
+@section Style {
+    <link rel="stylesheet" href="~/Register.css" />
+}
 
-        a {
-            color: var(--color-normal);
-            text-decoration: none;
-        }
+@section Header {
+    <a href="/saidas/cadastrar">Cadastrar Nova Requisição</a>
+    <a href="/saidas/visualizar">Visualizar Requisições</a>
+}
 
-            a:hover {
-                color: var(--color-hover);
-            }
+<form action="/saidas/excluir/@Model.Id" method="post">
+    <p>Você tem certeza que deseja excluir o registro <strong>@Model.Nome</strong>?</p>
 
-        .a-main {
-            color: var(--color-dif);
-            text-decoration: none;
-            font-size: 24px;
-            font-weight: bold;
-        }
+    <div class="button-interaction">
+        <button type="submit" id="botaoCustom">Confirmar</button>
+        <a type="button" id="botaoCustom" href="/saidas/visualizar">Voltar</a>
+    </div>
+</form>
 
-        nav {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 96px;
-            justify-content: space-between;
-            padding: 0 128px;
-            background-color: var(--fundo-secundario);
-            border: 1px solid var(--borda);
-        }
-
-            nav > ul {
-                display: flex;
-                gap: 32px;
-                list-style: none;
-            }
-
-        header {
-            padding: 0 192px;
-        }
-
-        main {
-            padding: 0 192px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 32px;
-        }
-
-        @@media (max-width: 768px) {
-            nav {
-                padding: 20px;
-                justify-content: center;
-            }
-
-            header {
-                padding: 20px;
-            }
-
-            main {
-                padding: 20px;
-            }
-        }
-
-        .option {
-            padding: 0 16px;
-            width: 256px;
-        }
-
-            .option > input[type=text] {
-                outline: none;
-                width: 100%;
-                padding: 12px 24px;
-                margin: 8px 0;
-                box-sizing: border-box;
-            }
-
-            .option > input[type=date] {
-                padding: 8px 12px;
-                margin: 8px 0;
-            }
-
-            .option > button {
-                background-color: #333333;
-                color: white;
-                border: 2px solid dodgerblue;
-                border-radius: 8px;
-                font-size: 32px;
-                transition-duration: 0.4s;
-            }
-
-                .option > button:hover {
-                    background-color: dodgerblue;
-                }
-
-    </style>
-    </head>
-
-    <body>
-        <nav>
-            <a class="a-main" href="/">Gestão de Medicamentos</a>
-            <ul>
-                <li><a href="/fornecedores/visualizar">Fornecedores</a></li>
-                <li><a href="/funcionarios/visualizar">Funcionários</a></li>
-                <li><a href="/pacientes/visualizar">Pacientes</a></li>
-                <li><a href="/medicamentos/visualizar">Medicamentos</a></li>
-                <li><a href="/entradas/visualizar">Entradas</a></li>
-                <li><a href="/prescricoes/visualizar">Prescrições</a></li>
-                <li><a href="/saidas/visualizar">Requisições</a></li>
-            </ul>
-        </nav>
-
-        <header>
-            <h2>Exclusão de Requisição</h2>
-            <a href="/saidas/cadastrar">Cadastrar Nova Requisição</a>
-            <a href="/saidas/visualizar">Visualizar Requisições</a>
-            <hr/>
-        </header>
-        
-        <main>
-            <p>Você tem certeza que deseja excluir o registro "@Model.Nome"?</p>
-
-            <form action="/saidas/excluir/@Model.Id" method="post">
-                <div class="option">
-                    <button type="submit">Confirmar</button>
-                    <a href="/saidas/visualizar">Voltar</a>
-                </div>
-            </form>
-        </main>
-    </body>
-</html>

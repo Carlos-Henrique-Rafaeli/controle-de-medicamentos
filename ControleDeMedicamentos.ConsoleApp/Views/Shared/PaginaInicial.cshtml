@@ -1,191 +1,71 @@
-﻿<!Doctype html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Gestão de Medicamentos</title>
+﻿@{
+    Layout = "_Layout";
+    ViewBag.Titulo = "Página Inicial";
+}
 
-        <style>
-            :root{
-                --fundo-principal: #333333;
-                --fundo-secundario: #444444;
-                --borda: #2f2f2f; 
-                --color-main: white;
-                --color-normal: skyblue;
-                --color-hover: deepskyblue;
-                --color-dif: dodgerblue;
-            }
+@section Style {
+    <link rel="stylesheet" href="~/Main.css" />
+}
 
-            body {
-                margin: 0;
-                background-color: var(--fundo-principal);
-                color: var(--color-main);
-                font-family: Tahoma, sans-serif;
-            }
+<div class="card">
+    <h3>Fornecedores</h3>
 
-            a {
-                color: var(--color-normal);
-                text-decoration: none;
-            }
-            
-            a:hover {
-                color: var(--color-hover);
-            }
+    <ul>
+        <li><a href="/fornecedores/cadastrar">Cadastrar Novo Fornecedor</a></li>
+        <li><a href="/fornecedores/visualizar">Visualizar Fornecedores</a></li>
+    </ul>
+</div>
 
-            nav {
-                display: flex;
-                flex-wrap: wrap;
-                align-items: center;
-                gap: 96px;
+<div class="card">
+    <h3>Funcionários</h3>
 
-                justify-content: space-between;
+    <ul>
+        <li><a href="/funcionarios/cadastrar">Cadastrar Funcionário</a></li>
+        <li><a href="/funcionarios/visualizar">Visualizar Funcionários</a></li>
+    </ul>
+</div>
 
-                padding: 0 128px;
-                background-color: var(--fundo-secundario);
-                border: 1px solid var(--borda);
-            }
+<div class="card">
+    <h3>Pacientes</h3>
 
-            nav > h2 {
-                margin: 0;
-                color: var(--color-dif);
-            }
+    <ul>
+        <li><a href="/pacientes/cadastrar">Cadastrar Paciente</a></li>
+        <li><a href="/pacientes/visualizar">Visualizar Pacientes</a></li>
+    </ul>
+</div>
 
-            nav > ul {
-                display: flex;
-                gap: 32px;
-                list-style: none;
-            }
+<div class="card">
+    <h3>Medicamentos</h3>
 
-            header {
-                padding: 0 192px;
-            }
+    <ul>
+        <li><a href="/medicamentos/cadastrar">Cadastrar Medicamento</a></li>
+        <li><a href="/medicamentos/visualizar">Visualizar Medicamentos</a></li>
+    </ul>
+</div>
 
-            main {
-                padding: 0 192px;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 32px;
-            }
+<div class="card">
+    <h3>Entradas</h3>
 
-            .card {
-                border: 4px solid var(--color-normal);
-                border-radius: 8px;
-                padding: 0 16px;
+    <ul>
+        <li><a href="/entradas/cadastrar">Cadastrar Entradas</a></li>
+        <li><a href="/entradas/visualizar">Visualizar Entradas</a></li>
+    </ul>
+</div>
 
-                width: 256px;
-                height: 128px;
-                background-color: none;
-                transition-duration: 0.4s;
-            }
-            
-            .card:hover {
-                background-color: var(--fundo-secundario);
-                border: 4px solid var(--color-hover);
-                transform: scale(1.05);
-            }
+<div class="card">
+    <h3>Prescições</h3>
 
-            .card > h3 {
-                text-align: center;
-            }
+    <ul>
+        <li><a href="/prescricoes/cadastrar">Cadastrar Prescrição</a></li>
+        <li><a href="/prescricoes/visualizar">Visualizar Prescrições</a></li>
+    </ul>
+</div>
 
-            @@media (max-width: 768px) {
-                nav {
-                    padding: 20px;
-                    justify-content: center;
-                }
+<div class="card">
+    <h3>Requisição de Saída</h3>
 
-                header {
-                    padding: 20px;
-                }
-
-                main {
-                    padding: 20px;
-                }
-            }
-        </style>
-
-    </head>
-
-    <body>
-        <nav>
-            <h2>Gestão de Medicamentos</h2>
-            <ul>
-                <li><a href="/fornecedores/visualizar">Fornecedores</a></li>
-                <li><a href="/funcionarios/visualizar">Funcionários</a></li>
-                <li><a href="/pacientes/visualizar">Pacientes</a></li>
-                <li><a href="/medicamentos/visualizar">Medicamentos</a></li>
-                <li><a href="/entradas/visualizar">Entradas</a></li>
-                <li><a href="/prescricoes/visualizar">Prescrições</a></li>
-                <li><a href="/saidas/visualizar">Requisições</a></li>
-            </ul>
-        </nav>
-
-        <header>
-            <h2>Página Inicial</h2>
-        </header>
-
-        <main>
-            <div class="card">
-                <h3>Fornecedores</h3>
-
-                <ul>
-                    <li><a href="/fornecedores/cadastrar">Cadastrar Novo Fornecedor</a></li>
-                    <li><a href="/fornecedores/visualizar">Visualizar Fornecedores</a></li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h3>Funcionários</h3>
-
-                <ul>
-                    <li><a href="/funcionarios/cadastrar">Cadastrar Funcionário</a></li>
-                    <li><a href="/funcionarios/visualizar">Visualizar Funcionários</a></li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h3>Pacientes</h3>
-
-                <ul>
-                    <li><a href="/pacientes/cadastrar">Cadastrar Paciente</a></li>
-                    <li><a href="/pacientes/visualizar">Visualizar Pacientes</a></li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h3>Medicamentos</h3>
-
-                <ul>
-                    <li><a href="/medicamentos/cadastrar">Cadastrar Medicamento</a></li>
-                    <li><a href="/medicamentos/visualizar">Visualizar Medicamentos</a></li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h3>Entradas</h3>
-
-                <ul>
-                    <li><a href="/entradas/cadastrar">Cadastrar Entradas</a></li>
-                    <li><a href="/entradas/visualizar">Visualizar Entradas</a></li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h3>Prescições</h3>
-
-                <ul>
-                    <li><a href="/prescricoes/cadastrar">Cadastrar Prescrição</a></li>
-                    <li><a href="/prescricoes/visualizar">Visualizar Prescrições</a></li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h3>Requisição de Saída</h3>
-
-                <ul>
-                    <li><a href="/saidas/cadastrar">Cadastrar Requisição</a></li>
-                    <li><a href="/saidas/visualizar">Visualizar Requisições</a></li>
-                </ul>
-            </div>
-        </main>
-    </body>
-</html>
+    <ul>
+        <li><a href="/saidas/cadastrar">Cadastrar Requisição</a></li>
+        <li><a href="/saidas/visualizar">Visualizar Requisições</a></li>
+    </ul>
+</div>
