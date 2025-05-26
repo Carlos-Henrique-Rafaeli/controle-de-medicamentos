@@ -16,7 +16,7 @@
     <a href="/pacientes/visualizar">Visualizar Pacientes</a>
 }
 
-<form action="/pacientes/cadastrar" method="post">
+<form action="/pacientes/editar/@Model.Id" method="post">
     <div class="option">
         <label>Nome do Paciente:</label>
         <input type="text" name="nome" value="@Model.Nome" />

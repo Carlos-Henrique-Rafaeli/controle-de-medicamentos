@@ -15,7 +15,7 @@
     <a href="/funcionarios/visualizar">Visualizar Funcionários</a>
 }
 
-<form action="/funcionarios/cadastrar" method="post">
+<form action="/funcionarios/editar/@Model.Id" method="post">
     <div class="option">
         <label>Nome do Funcionário:</label>
         <input type="text" name="nome" value="@Model.Nome"/>
