@@ -19,13 +19,13 @@
 <form action="/fornecedores/cadastrar" method="post">
     <div class="option">
         <label>Nome do Fornecedor:</label>
-        <input type="text" name="nome" />
+        <input type="text" name="nome" value="@Model.Nome"/>
 
         <label>Telefone do Fornecedor:</label>
-        <input type="text" name="telefone" />
+        <input type="text" name="telefone" value="@Model.Telefone"/>
 
         <label>CNPJ do Fornecedor:</label>
-        <input type="text" name="cnpj" />
+        <input type="text" name="cnpj" value="@Model.CNPJ"/>
 
         <div class="button-interaction">
             <button type="submit" id="botaoCustom">Confirmar</button>

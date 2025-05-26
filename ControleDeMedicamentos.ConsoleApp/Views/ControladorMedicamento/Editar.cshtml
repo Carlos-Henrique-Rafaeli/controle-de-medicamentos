@@ -19,10 +19,10 @@
 <form action="/medicamentos/cadastrar" method="post">
     <div class="option">
         <label>Nome do Medicamento:</label>
-        <input type="text" name="nome" />
+        <input type="text" name="nome" value="@Model.Nome"/>
 
         <label>Descrição do Medicamento:</label>
-        <input type="text" name="descricao" />
+        <input type="text" name="descricao" value="@Model.Descricao"/>
 
         <label for="FornecedorId">Fornecedor do Medicamento:</label>
         <select name="FornecedorId" id="FornecedorId">

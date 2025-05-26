@@ -18,13 +18,13 @@
 <form action="/funcionarios/cadastrar" method="post">
     <div class="option">
         <label>Nome do Funcionário:</label>
-        <input type="text" name="nome" />
+        <input type="text" name="nome" value="@Model.Nome"/>
 
         <label>Telefone do Funcionário:</label>
-        <input type="text" name="telefone" />
+        <input type="text" name="telefone" value="@Model.Telefone"/>
 
         <label>CPF do Funcionário:</label>
-        <input type="text" name="cpf" />
+        <input type="text" name="cpf" value="@Model.CPF"/>
 
         <div class="button-interaction">
             <button type="submit" id="botaoCustom">Confirmar</button>
