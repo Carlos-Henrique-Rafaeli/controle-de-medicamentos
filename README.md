@@ -1,7 +1,9 @@
 # Projeto Controle De Medicamentos
 
+## Demonstração
 
-![]( https://imgur.com/yL66Kse.gif )
+![]( https://i.imgur.com/nCxo6K2.gif )
+
 ## Projeto
 
 Desenvolvido durante o curso Fullstack da [Academia do Programador](https://www.academiadoprogramador.net) 2025
@@ -76,7 +78,7 @@ por registrar, visualizar, editar e excluir dados de fornecedores, pacientes, me
 
 #### Clone o Repositório
 ```
-https://github.com/alquimia-do-programador/controle-de-medicamentos
+https://github.com/Carlos-Henrique-Rafaeli/controle-de-medicamentos
 ```
 
 #### Navegue até a pasta raiz da solução
